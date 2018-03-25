@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>
+<!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>Finance</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font
+  ================================================== -->
+
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- SCROLL BAR MOBILE MENU
+  ================================================== -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css" />
+    <!-- MAIN STYLE
+  ================================================== -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- color scheme -->
+    <link rel="stylesheet" href="js/switcher/demo.css" type="text/css">
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.png">
+
+</head>
+
+<body>
+    <div id="switcher">
+        <span id="show-chatbot" class="custom-close"></span>
+        <span id="close-chatbot" class="custom-show"></span>
+
+        <div class="row">
+            <div class="col s4">
+                <div class="card white" style="background: #fff;">
+                    <div class="card-content">
+                        <div id='bot-div' style='background: #fff;'>
+                            <div class="row">
+                                <div id='avatar-video-div' class="avatarCenter" style='background-repeat: no-repeat;'>
+                                    <video id='avatar-video' autoplay preload='auto' style='background:transparent;height:320px;'>
+                                        Video format not supported by your browser (try Chrome)
+                                    </video>
+                                </div>
+                                <div id='avatar-canvas-div' class="avatarCenter">
+                                    <canvas id='avatar-canvas' style='background:transparent;height:320px;' class="avatarCenter">
+                                        Canvas not supported by your browser (try Chrome)
+                                    </canvas>
+                                </div>
+                                <div style="margin:20px;">
+                                    <p id='response'>Bot: Welcome to the Company Service! How can I help you today?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action" id="acciones" style="margin-left:15px;padding-bottom:50px;">
+                        <input id='chat' placeholder="texto" type='text' />
+                        <button onclick="send()" class="btn btn-primary">
+                            <i class="fa fa-paper-plane" id="rec"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col s4"></div>
+        </div>
+    </div>
+
+    <div id=jSplash>
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <!-- Overlay Mobile Menu Click -->
+    <div class="mobile-menu-first">
+        <div id="mobile-menu-right" class="mobile-menu-dark">
+            <div class="mCustomScrollbar light" data-mcs-theme="minimal-dark">
+                <div class="header-mobile-menu hmm-v1">
+                    <a class="has-icon" href="tel:3418726123">
+                        <span class="lnr lnr-phone-handset icon-set-1 icon-xs"></span>
+                        <span class="sub-text-icon text-middle">341-8726-123</span>
+                    </a>
+                </div>
+                <!-- End header mobile menu -->
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="icon-home"></i> Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About Us </a>
+                    </li>
+                    <li>
+                        <a href="service.html">Services </a>
+                    </li>
+                    <li>
+                        <a href="testimonio.html">Testimonials </a>
+                    </li>
+                    <li>
+                        <a href="faqs.html">FAQs </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact Us </a>
+                    </li>
+                </ul>
+                <div class="footer-mobile-menu fmm-v1">
+                    <ul class="social">
+                        <li class="facebook">
+                            <a href="">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="twitter">
+                            <a href="">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="google-plus">
+                            <a href="">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li class="youtube">
+                            <a href="">
+                                <i class="fa fa-youtube-play"></i>
+                            </a>
+                        </li>
+                        <li class="linkedin">
+                            <a href="">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="address-footer-mobile">
+
+                        <li>
+                            <a href="">
+                                <span class="lnr lnr-map-marker"></span> Calle 178 # 30 - 56</a>
+                        </li>
+                        <li>
+                            <a href="tel:3418726123 ">
+                                <span class="lnr lnr-smartphone"></span> 341-8726-123 </a>
+                        </li>
+                        <li>
+                            <a href="mailto:contact@Corporation.com">
+                                <span class="lnr lnr-envelope"></span> contact@Corporation.com</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- End footer mobile menu -->
+            </div>
+        </div>
+        <!-- /#rmm   -->
+    </div>
+    <!-- End Mobile Menu -->
+    <div id="page">
+        <div class="top-bar top-bar-dark">
+            <div class="container">
+                <div class="left-top-bar left-top-bar-long">
+                    <p class="hidden-xs">
+                        <span class="lnr lnr-map-marker large-lnr"></span> Calle 178 # 30 - 56</p>
+                    <p class="hidden-xs">
+                        <span class="lnr lnr-smartphone large-lnr"></span> 341-8726-123 </p>
+                    <p class="hidden-xs">
+                        <span class="lnr lnr-envelope large-lnr"></span> contact@Corporation.com</p>
+                    <div class="popover-container visible-xs">
+                        <button type="button" class="btn btn-popover popover-dark" data-container="body" data-toggle="popover" data-placement="bottom"
+                            title="0112-826-2789" data-content="contact@site.com">
+                            <span class="lnr lnr-phone-handset"></span>
+                        </button>
+                        <button type="button" class="btn btn-popover popover-dark" data-container="body" data-toggle="popover" data-placement="bottom"
+                            title="8th floor, 379 Hudson St" data-content="New York, NY 10018">
+                            <span class="lnr lnr-map-marker"></span>
+                        </button>
+                        <button type="button" class="btn btn-popover popover-dark" data-container="body" data-toggle="popover" data-placement="bottom"
+                            title="07:30 am – 06:00 pm" data-content="Every Day">
+                            <span class="lnr lnr lnr-clock"></span>
+                        </button>
+                    </div>
+                </div>
+                <!-- End left top bar -->
+                <div class="right-top-bar">
+                    <ul class="social">
+                        <li class="facebook">
+                            <a href="">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="twitter">
+                            <a href="">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="google-plus">
+                            <a href="">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li class="youtube">
+                            <a href="">
+                                <i class="fa fa-youtube-play"></i>
+                            </a>
+                        </li>
+                        <li class="linkedin">
+                            <a href="">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End right top bar -->
+            </div>
+            <!-- End container -->
+        </div>
+        <!-- End top bar -->
+        <header id="sticked-menu" class="header header-v5">
+            <div class="container">
+                <div class="logo">
+                    <div class="mm-toggle visible-xs visible-sm">
+                        <i class="fa-remove fa fa-bars"></i>
+                        <span class="mm-label">Menu</span>
+                    </div>
+                    <a href="index.html">
+                        <img src="img/Header/logo.png" class="img-responsive" alt="Image">
+                    </a>
+                </div>
+                <nav class="navi-desktop-site hidden-sm hidden-xs">
+                    <ul class="navi-level-1 uppercase">
+                        <li class="has-sub">
+                            <a href="index.html">Home </a>
+                        </li>
+                        <li class="has-sub">
+                            <a href="about.html">About Us </a>
+                        </li>
+                        <li class="has-sub">
+                            <a href="service.html">Services </a>
+                        </li>
+                        <li class="has-sub">
+                            <a href="testimonio.html">Testimonials </a>
+                        </li>
+                        <li class="has-sub">
+                            <a href="faqs.html">FAQs </a>
+                        </li>
+                        <li class="has-sub">
+                            <a href="contact.html">Contact Us </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- End container -->
+        </header>
+        <!-- END HEADER -->
+        <!-- Section Header Title -->
+        <section class="bg-grey padding-top-45 padding-bottom-45 clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title">
+                        <div class="col-md-12">
+                            <h2>Testimonials</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End container -->
+
+        </section>
+        <!--  End Section -->
+
+        <!-- Section BreadCrumb -->
+        <div class="no-padding border-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ol class="breadcrumb breadcrumb-finance">
+                            <li>
+                                <a href="index.html">
+                                    <i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                            </li>
+                            <li class="active">Testimonials</li>
+                        </ol>
+                    </div>
+                    <!--  End col -->
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End container -->
+        </div>
+        <!--  End Section -->
+
+        <div class="line"></div>
+        <!-- Demo Testimonials 3 Columns -->
+        <section class="bg-grey">
+            <div class="container">
+                <div class="row">
+                    <div class="testimonial-3-colum-demo">
+                        <h3>Testimonials 3 Columns</h3>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/1.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Linda Campbell</h4>
+                                <span class="job-testimonials-3-columns">CEO Finanace Theme Group</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/12.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">John Walker</h4>
+                                <span class="job-testimonials-3-columns">Photographer</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/2.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Cheryl Cruz</h4>
+                                <span class="job-testimonials-3-columns">Marketing Manager</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/3.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">James Smith</h4>
+                                <span class="job-testimonials-3-columns">Senior Finance Manager</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/4.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Maria Garcia</h4>
+                                <span class="job-testimonials-3-columns">Finance Director Theme Group</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/5.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Kieron George</h4>
+                                <span class="job-testimonials-3-columns">Finance Assistant - PR Agency</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/6.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">David Caune</h4>
+                                <span class="job-testimonials-3-columns">Marketing Manager</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/7.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Robert Johnson</h4>
+                                <span class="job-testimonials-3-columns">Photographer</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/8.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Zhang Wei </h4>
+                                <span class="job-testimonials-3-columns">Finance Assistant</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/9.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Jolyn Athens</h4>
+                                <span class="job-testimonials-3-columns">CEO Finanace Theme Group</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/10.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Ebony Mccurry</h4>
+                                <span class="job-testimonials-3-columns">Finance Assistant</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/11.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Sofia Canning</h4>
+                                <span class="job-testimonials-3-columns">Senior Finance Manager</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Testimonials 2 Columns -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="testimonial-3-colum-demo">
+                        <h3>Testimonials 2 Columns</h3>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/1.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Linda Campbell</h4>
+                                <span class="job-testimonials-3-columns">CEO Finanace Theme Group</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/12.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">John Walker</h4>
+                                <span class="job-testimonials-3-columns">Photographer</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/2.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Cheryl Cruz</h4>
+                                <span class="job-testimonials-3-columns">Marketing Manager</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/3.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">James Smith</h4>
+                                <span class="job-testimonials-3-columns">Senior Finance Manager</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/4.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Maria Garcia</h4>
+                                <span class="job-testimonials-3-columns">Finance Director Theme Group</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/5.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Kieron George</h4>
+                                <span class="job-testimonials-3-columns">Finance Assistant - PR Agency</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/6.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">David Caune</h4>
+                                <span class="job-testimonials-3-columns">Marketing Manager</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/7.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Robert Johnson</h4>
+                                <span class="job-testimonials-3-columns">Photographer</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/8.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Zhang Wei </h4>
+                                <span class="job-testimonials-3-columns">Finance Assistant</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/9.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Jolyn Athens</h4>
+                                <span class="job-testimonials-3-columns">CEO Finanace Theme Group</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/10.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Ebony Mccurry</h4>
+                                <span class="job-testimonials-3-columns">Finance Assistant</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                        <div class="col-sm-6 ">
+                            <div class="item item-testimonials-3-columns text-left">
+                                <p class="quote-icon">“</p>
+                                <p>
+                                    <i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio
+                                        fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis,
+                                        faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i>
+                                </p>
+                                <div class="avatar-testimonials-3-columns">
+                                    <img src="img/Testimonials/11.jpg" class="img-responsive" alt="Image">
+                                </div>
+                                <h4 class="name-testimonials-3-columns">Sofia Canning</h4>
+                                <span class="job-testimonials-3-columns">Senior Finance Manager</span>
+                            </div>
+                            <!-- end item -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class=" bg-dark footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-row">
+
+                        <div class="footer-col-1">
+                            <a href="index.html">
+                                <img src="img/Footer/logo-footer.png" class="img-responsive" alt="Image">
+                            </a>
+                            <ul class="clearfix">
+                                <li>
+                                    <a href="services-detail.html">Finacial Planning</a>
+                                </li>
+                                <li>
+                                    <a href="services-detail.html">Insurance Consulting</a>
+                                </li>
+                                <li>
+                                    <a href="services-detail.html">Investments Management</a>
+                                </li>
+                                <li>
+                                    <a href="services-detail.html">Retirement Strategies</a>
+                                </li>
+                                <li>
+                                    <a href="services-detail.html">Taxes Planning</a>
+                                </li>
+                                <li>
+                                    <a href="services-detail.html">Business Loan</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="footer-col-2">
+                            <h3 class="text-white">Contact us</h3>
+                            <div class="border-2-side">
+                                <p>Address: Calle 178 # 30 - 56</p>
+                                <p>
+                                <span>Phone: 341-8726-123</span>
+                                </p>
+                                <p>
+                                <span>Email: contact@Corporation.com</span>
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="footer-col-3">
+                            <h3 class="text-white">Follow us</h3>
+                            <ul class="social social-footer">
+                                <li class="facebook">
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="twitter">
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="google-plus">
+                                    <a href="#">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="youtube">
+                                    <a href="#">
+                                        <i class="fa fa-youtube-play"></i>
+                                    </a>
+                                </li>
+                                <li class="linkedin">
+                                    <a href="#">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- End footer row -->
+                    <div class="col-md-12 footer-link">
+                        <p>Copyright © 2018.</p>
+                        <ul>
+                            <li>
+                                <a href="about.html">About </a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact Us </a>
+                            </li>
+                            <li>
+                                <a href="#">Term & Conditions</a>
+                            </li>
+                            <li>
+                                <a href="#">Privacy Policy </a>
+                            </li>
+                            <li>
+                                <a href="#">Sites Map</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Row -->
+
+            </div>
+            <!-- End container -->
+        </footer>
+        <!-- End  -->
+
+
+    </div>
+    <!-- End Page -->
+    <a id="to-the-top" style="display: block;">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Back To Top -->
+    <!-- SCRIPT
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/plugins/jpreLoader.js"></script>
+    <script src="js/plugins/jquery.waypoints.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/easing.js"></script>
+    <script src="js/plugins/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/plugins/fancySelect.js"></script>
+    <script src="js/plugins/custom.js"></script>
+    <!-- Switcher
+    ================================================== -->
+    <script src="js/switcher/demo.js"></script>
+    <!-- Mobile Menu
+    ================================================== -->
+    <script src="js/plugins/jquery.mobile-menu.js"></script>
+    <script src="js/plugins/sticky.min.js"></script>
+    <!-- Initializing Botlibre
+    ================================================== -->
+    <script src="http://www.botlibre.com/scripts/sdk.js"></script>
+    <script src="js/plugins/Chatbot.js"></script>
+
+</body>
+
+</html>
