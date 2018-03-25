@@ -29,7 +29,7 @@ function send() {
     if(text==="I'd like to find information about paying rates, please!"){
         setResponse("Sure, here is the link you're after: http://link.com.co");
     }else{
-        setResponse("Escused not reponsed");
+        setResponse("We do not have this information available at this time");
     }
 }
 function setResponse(val) {
